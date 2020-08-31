@@ -10,6 +10,13 @@ const apiRoute = require('./app/routes/routes')
 // request logger
 app.use(morgan('common'))
 
+
+app.use(function (request, response, next) {
+    console.log(request.method, request.originalUrl)
+    // response.send('balik')
+    next()
+})
+
 // cross domain 
 app.use(cors());
 

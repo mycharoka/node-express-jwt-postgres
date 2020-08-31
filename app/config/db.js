@@ -1,4 +1,3 @@
-require('dotenv').config();
 const postgres = require('pg');
 
 
