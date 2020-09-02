@@ -12,7 +12,7 @@ app.use(morgan('common'))
 
 
 app.use(function (request, response, next) {
-    console.log(request.method, request.originalUrl)
+    console.log('COBA MIDDLEWARE >> ', request.method, request.originalUrl)
     // response.send('balik')
     next()
 })
