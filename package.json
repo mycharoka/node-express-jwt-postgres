@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "migration": "node app/migration"
+    "migration": "node app/migration/index.js"
   },
   "keywords": [
     "nodejs",
