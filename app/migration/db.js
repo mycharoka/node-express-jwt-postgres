@@ -10,6 +10,8 @@ const client = new Client({
     host: process.env.DB_HOST
 })
 
+console.log('user client >>', process.env.DB_USER)
+
 module.exports = {
     client
 }

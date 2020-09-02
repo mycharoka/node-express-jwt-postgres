@@ -1,8 +1,8 @@
+require('dotenv').config()
 const {
     client
 } = require('./db')
 const auth = require('../service/migrations')
-
 
 let migration = async () => {
     try {
