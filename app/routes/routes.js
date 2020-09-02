@@ -14,9 +14,9 @@ const {
 const {
     response
 } = require('express');
-// const User = require('../service/service');
 
-// buat user baru
+
+//TODO: buat user baru
 // router.post('/register', User.createSignUp);
 router.post('/register', async (request, response) => {
     const {
@@ -27,21 +27,21 @@ router.post('/register', async (request, response) => {
     response.json(result)
 });
 
-// cari user 1 aja
+//TODO: cari user 1 aja
 // router.get('/auth', authToken, User.findUserById);
 router.get('/auth', authToken, async (request, response) => {
     const result = await findUserById(request.user.id)
     response.json(result)
 });
 
-// cari semua user
+//TODO: cari semua user
 router.get('/', async (request, response) => {
     let result = await findAllRegisteredUser();
     console.log('result routes >> ', result)
     response.json(result);
 });
 
-// user login
+//TODO: user login
 // router.post('/login', User.userLogin);
 router.post('/auth', async (request, response) => {
     const {
@@ -52,7 +52,7 @@ router.post('/auth', async (request, response) => {
     response.json(result)
 });
 
-// delete user
+//TODO: delete user
 // router.delete('/delete', authToken, User.deleteUser);
 router.delete('/delete', authToken, async (request, response) => {
     const username = request.user.username
@@ -61,7 +61,7 @@ router.delete('/delete', authToken, async (request, response) => {
     response.json(result)
 });
 
-// update user
+//TODO: update user
 // router.put('/update', authToken, User.updatePassword);
 router.put('/update', authToken, async (request, response) => {
     const username = request.user.username
