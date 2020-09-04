@@ -21,15 +21,16 @@ const {
 router.post('/register', async (request, response) => {
     const {
         username,
-        password
+        password,
+        role
     } = request.body
-    let result = await createSignUp(username, password)
+    let result = await createSignUp(username, password, role)
     response.json(result)
 });
 
 //TODO: cari user 1 aja
 // router.get('/auth', authToken, User.findUserById);
-router.get('/auth', authToken, async (request, response) => {
+router.get('/auth', authToken('admin', 'tester'), async (request, response) => {
     const result = await findUserById(request.user.id)
     response.json(result)
 });
@@ -54,9 +55,11 @@ router.post('/auth', async (request, response) => {
 
 //TODO: delete user
 // router.delete('/delete', authToken, User.deleteUser);
-router.delete('/delete', authToken, async (request, response) => {
-    const username = request.user.username
-    const password = request.body.password
+router.delete('/delete', authToken('admin'), async (request, response) => {
+    const {
+        username,
+        password
+    } = request.body
     let result = await deleteUser(username, password)
     response.json(result)
 });
