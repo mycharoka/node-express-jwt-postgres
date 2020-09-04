@@ -1,116 +1,57 @@
 
-# TODO : Uji Coba Fungsi Sistem CRUD Express JS
+# TODO :  CRUD Express JS
 
   
 
 Melakukan pengujian dari sistem CRUD menggunakan Express JS dengan autentikasi JWT. CRUD yang diubat adalah untuk **Sign Up**, **Login**, **Update Password User**, **Find All Registered User**, **Find User by ID**, dan **Delete User**
 
   
-  
+## Getting Started  
+Pertama-tama yang harus dilakukan terlebih dahulu adalah menginstall `package.json` dengan menggunakan command jika terdapat `package-lock.json`
 
-## 1. Sign Up
+First thing first that should be done is to install the `package.json` file or if there's `package-lock.json` you can use this command
 
- 2. [ ] User bisa mendaftar dengan memasukkan **Username** dan **Password**
+    npm ci
+jika hanya terdapat `package.json` maka lakukan 
 
- 3. [ ] Sistem mengecek apakah **Username** yang di input user sudah terdapat di database
-	 > **Note :** Sistem akan mengecek Username **JIKA** input Username dan Password sudah terisi
+If there's only `package.json` file then do this command
 
- 4. [ ] **Password** yang didaftarkan ke database harus melewati tahap enkripsi
+    npm install
 
- 5. [ ] Jika terdapat pendaftaran di sistem dengan **Username** yang sudah terdaftar sistem menampilkan peringatan
- 6. [ ] Sistem memerika apakah Username dan Password yang di input merupakan string kosong atau spasi
+Buat file `.env` dengan variabel yang tertera pada `.env.example`, untuk isi dari `.env` sesuaikan dengan kebutuhan atau settingan masing-masing, sebagai acuan
 
-  
-  
+Create the `.env` file using all variables that written on `.env.example`,  for the content of `.env` file fill it with your own settings
 
-## 2. Login
+    ACCESS_TOKEN_SECRET= "secret for JWT token"
+    	
+    DB_USER = "user database"
+    DB_PASS = "password database"
+    DB_NAME = "database name"
+    DB_PORT =  port database
+    
+    PORT = port app
 
-  
+>**Notes :** Untuk ACESS_TOKEN_SECRET dapat menggunakan require('crypto').randombytes(64).tostring('hex') untuk mendapatkan randombytes agar token secret tersedia secara acak 
 
-- [ ] User dapat memasukkan **Username** dan **Password**
+Jalankan command untuk migrasi database yang berfungsi untuk membuat table dan kolom secara otomatis, hal yang perlu dipersiapkan adalah database yang ingin dituju kemudian jalankan command pada terminal
 
-- [ ] Sistem memeriksa apakah **Username** yang di input terdaftar pada database
+Run this command to migrate the database so it can automatically build an new table and column on its own, it only require the database that you're going to use
 
-- [ ] Sistem memeriksa apakah **Password** yang di input merupakan password yang sama di database
+    npm run migration
 
-- [ ] Sistem memberikan peringatan jika ingin mencoba *Login* tanpa menginput **Username** atau **Password**
+Kemudian jika sudah maka untuk menjalankan app menggunakan command
 
-- [ ] Sistem memberikan peringatan jika ingin mencoba *Login* dengn menginput **Username** dan **Password** yang salah
+Run this command to start the app
 
-- [ ] Sistem dapat me -*generate* token JWT yang berisi **ID** dan **Username** yang terdaftar (***payload***)
-
-  
-
-## 3. Update Password User
-
-  
-
-- [ ] User memasukkan **Username** dan **Password** serta **Password Baru** yang akan di daftarkan
-
-- [ ] Sistem akan memeriksa jika **Username** yang di input terdaftar pada database
-
-- [ ] Sistem akan memeriksa jika **Password** yang di input merupakan password yang dengan yang terdapat pada database
-
-- [ ] Sistem akan melakukan enkripsi untuk **Password Baru** jika **Username** dan Password merupakan data yang terdaftar pada database
-
-- [ ] Sistem akan menyimpan **Password Baru** kedalam data **Username** yang diinput kedalam database
-
-- [ ] Sistem akan memberikan peringatan jika **Username** dan atau Password yang diinput tidak terdaftar didalam database
-- [ ] Sistem akan memeriksa jika **Password Baru** yang didaftar merupakan string kosong atau whitespaces
+    npm run dev
+## The CRUD feature
+ 1. Sign Up
+ 2. Login
+ 3. Update Password User
+ 4. Find User by ID
+ 5. Find All Registered User
+ 6. Delete User
 
   
 
-## 4. Find User by ID
 
-  
-
-- [ ] User memasukkan **ID** yang ingin dicari didalam sistem dengan token yang sudah digenerate untuk login
-	> **Note :** Fitur ini untuk mengecek saja ID dari user yang sudah terdaftar, **MUNGKIN** lebih cocok untuk sisi Admin
-
-- [ ] Sistem dapat menampilkan **ID** yang sesuai dengan permintaan User berdasarkan dari token yang di generate
-
-- [ ] Sistem akan memberikan peringatan jika **ID** yang diminta tidak terdapat pada sitem
-	> **Note :** Hal ini terjadi berdasrkan token yang di input
-
-  
-
-## 5. Find All Registered User
-
-  
-
-- [ ] User melakukan pencarian terhadap seluruh User yang terdaftar pada sistem
-
-- [ ] Sistem menampilkan seluruh User yang terdaftar beserta **ID** dan **Username**
-
-  
-
-## 6. Delete User
-
-  
-
-- [ ] User memasukkan **Username** dan **Password** untuk menghapus data user yang tersimpan di database
-
-- [ ] Sistem memeriksa **Username** yang dimasukkan oleh User dengan **Username** yang terdaftar di database
-
-- [ ] Jika sistem telah mem-*validasi*  **Username**, maka sistem kemudian akan memeriksa **Password**
-
-- [ ] Sistem akan memeriksa jika **Password** yang dimasukkan oleh user terdaftar pada database
-
-- [ ] Sistem akan menghapus data user jika proses **Username** dan **Password** sudah melewati tahap validasi
-
-- [ ] Sistem akan memberikan peringatan jika **Username** dan atau **Password** yang dimasukkan User tidak terdaftar pada database
-
-  
-  
-
-# Revisi
-
->  **Note:** cantumkan hal-hal yang perlu diperbaiki atau ditambah dari seluruh proses yang dibuat pada Sistem CRUD
-
--  ### Hal yang harus diperhatikan
-
-- [ ] Apakah pada saat **Sign Up** user dapet memasukkan **Username** dengan string dan **Password** kosong?
-
-- [ ] Apakah dari *payload* yang di *generate* dari token dapat digunakan untuk proses selain **GET** data User saja?
-- [ ] Apakah saat merubah **Password Baru**, input yang diberikan dapat berupa string kosong atau whitespace?
-- [ ] Bagaimana **JIKA** input **Username** dan **Password** yang di input untuk **Sign Up** merupakan kumpulan angka saja (integer)?
