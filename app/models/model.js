@@ -7,7 +7,7 @@ const {
 const findUserData = async username => {
     const query = `
     SELECT *
-    FROM latihan
+    FROM training
     WHERE username = $1
     `
     const value = [username]
@@ -22,13 +22,13 @@ const findUserData = async username => {
 }
 
 // TODO: INSERT USERNAME AND PASSWORD TO DATABASE
-const insertUserData = async (username, password) => {
+const insertUserData = async (username, password, role) => {
     const query = `
-    INSERT INTO latihan (username, password)
-    VALUES ($1, $2)
+    INSERT INTO training (username, password, role)
+    VALUES ($1, $2, $3)
     `
 
-    const value = [username, password]
+    const value = [username, password, role]
 
     try {
         const insertUserDataResult = await pool.query(query, value)
@@ -42,8 +42,8 @@ const insertUserData = async (username, password) => {
 // TODO: FIND USER BY ID
 const findUserId = async id => {
     const query = `
-    SELECT id, username
-    FROM latihan
+    SELECT id, username, role
+    FROM training
     WHERE id = $1
     `
 
@@ -61,8 +61,8 @@ const findUserId = async id => {
 // TODO: FIND ALL REGISTERED USER
 const findRegisteredUser = async () => {
     const query = `
-    SELECT id, username
-    FROM latihan
+    SELECT id, username, role
+    FROM training
     `
 
     try {
@@ -77,7 +77,7 @@ const findRegisteredUser = async () => {
 // TODO: DELETE USER
 const deleteUserData = async username => {
     const query = `
-    DELETE FROM latihan
+    DELETE FROM training
     WHERE username = $1
     `
 
@@ -96,7 +96,7 @@ const deleteUserData = async username => {
 // TODO: UPDATE PASSWORD
 const updateUserPassword = async (password, username) => {
     const query = `
-    UPDATE latihan
+    UPDATE training
     SET password = $1
     WHERE username = $2
     `
